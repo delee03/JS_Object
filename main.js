@@ -732,7 +732,7 @@ function fakeMap(chucNang1) {
     // ở hàm chức năng, nhiệm vụ của hàm sẽ thực hiện nhận vào giá trị phần tử và vị trí index của phần tử đang có trong vòng lặp và trả về một phần tử mới
     let newArrDienVien = [];
     for (let i = 0; i < arrDienVien.length; i++) {
-        let newDienVien = chucNang(arrDienVien[i], i);
+        let newDienVien = chucNang1(arrDienVien[i], i);
         newArrDienVien.push(newDienVien);
     }
     return newArrDienVien;
@@ -745,7 +745,7 @@ let newArrr = fakeMap((item, index) => {
 });
 console.log(newArrr);
 
-let chucNang = function () {};
+let chucNang1 = function () {};
 
 // Yêu cầu tạo ra một hàm filter ảo để thực hiện lọc các phần tử trong mảng
 let arrChampion = [
@@ -819,18 +819,24 @@ class XeHoi {
     constructor(tenXe, loaiXe, giaTien, mauSac) {
         this.tenXe = tenXe;
         // console.log(tenXe);
-        this.giaTien = giaTien;
         this.loaiXe = loaiXe;
+        this.giaTien = giaTien;
+
         this.mauSac = mauSac;
     }
 
     //Phương thức
     hienThiThongSoXe = function () {
-        console.log(`Chiếc xe ${this.tenXe} thuộc loại ${this.loaiXe} Có màu ${this.mauSac}
-            Giá tiền: ${this.giaTien}`);
+        console.log(`Chiếc xe ${this.tenXe} thuộc loại ${this.loaiXe} Có màu ${
+            this.mauSac
+        }
+            Giá tiền: ${new Intl.NumberFormat("vi-VN", {
+                style: "currency",
+                currency: "VND",
+            }).format(this.giaTien)} `);
     };
 }
 
 let xeS680 = new XeHoi("G65", "G CLass", 3000, "Đen");
 console.log(xeS680);
-xeS680 = hienThiThongSoXe();
+xeS680.hienThiThongSoXe();
